@@ -7,7 +7,7 @@ import Details from "../details";
 
 import history from "../../history";
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
   render() {
     const { className, handleSubmit } = this.props;
     const links = [
@@ -28,9 +28,17 @@ class SignInForm extends Component {
       },
     ];
     return (
-      <form onSubmit={handleSubmit} className={`${className} sign-in-form`}>
+      <form onSubmit={handleSubmit} className={`${className} sign-up-form`}>
         <Field
-          className="sign-in-form__email"
+          className="sign-up-form__name"
+          type="name"
+          title="Name"
+          placeholder="Name"
+          name="name"
+          component={FormInput}
+        />
+        <Field
+          className="sign-up-form__email"
           type="email"
           title="Email"
           placeholder="Email"
@@ -38,24 +46,42 @@ class SignInForm extends Component {
           component={FormInput}
         />
         <Field
-          className="sign-in-form__password"
+          className="sign-up-form__password"
           type="password"
           title="Password"
           placeholder="Password"
           name="password"
           component={FormInput}
         />
-        <div className="sign-in-form__line"></div>
         <Field
-          className="sign-in-form__login"
+          className="sign-up-form__confirm-password"
+          type="password"
+          title="Confirm Password"
+          placeholder="Confirm Password"
+          name="confirm"
+          component={FormInput}
+        />
+
+        <div className="sign-up-form__line"></div>
+        <Field
+          className="sign-up-form__login"
           onClick={() => console.log("tryna submit")}
           type="submit"
           title="Login"
           name="login"
           component={FormButton}
         />
+        <Field
+          className="sign-up-form__back"
+          onClick={() => console.log("tryna go back")}
+          type="button"
+          title="Back"
+          name="back"
+          short={true}
+          component={FormButton}
+        />
         <Details
-          className="sign-in-form__details"
+          className="sign-up-form__details"
           title="QuickLinks"
           links={links}
         />
@@ -64,8 +90,8 @@ class SignInForm extends Component {
   }
 }
 
-SignInForm = reduxForm({
-  form: "SignInForm",
-})(SignInForm);
+SignUpForm = reduxForm({
+  form: "SignUpForm",
+})(SignUpForm);
 
-export default SignInForm;
+export default SignUpForm;
